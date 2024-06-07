@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cost = $_POST['cost'];
 
     // Database connection
-    $databaseChemin = "odbc:Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=C:\\path\\to\\your\\database.accdb;";
+    $databaseChemin = "odbc:Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=C:\Users\bolad\Documents\BiosynexAnalytics\BiosynexAnalytics.accdb;";
     $username = '';
     $password = '';
 

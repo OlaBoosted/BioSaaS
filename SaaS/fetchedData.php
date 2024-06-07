@@ -1,16 +1,16 @@
 <?php
- // Database connection
- $dsn = "odbc:Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=C:\\path\\to\\your\\database.accdb;";
- $user = ''; // Typically not used for Access
- $password = ''; // Typically not used for Access
+// Database connection
+$dsn = "odbc:Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=C:\Users\bolad\Documents\BiosynexAnalytics\BiosynexAnalytics.accdb;";
+$user = ''; // Typically not used for Access
+$password = ''; // Typically not used for Access
 
- try {
-     // Create a new PDO instance
-     $conn = new PDO($dsn, $user, $password);
-     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
+try {
+    // Create a new PDO instance
+    $conn = new PDO($dsn, $user, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
 
 
 $factoryNum = $_GET['factoryNum'];
@@ -29,7 +29,7 @@ $totalQuantity = 0;
 $totalTime = 0;
 $totalPause = 0;
 
-while($row = $result->fetch_assoc()) {
+while ($row = $result->fetch_assoc()) {
     $productionData[] = $row;
     $totalQuantity += $row['Quantité'];
     $startTime = strtotime($row['Start']);
@@ -97,7 +97,7 @@ if ($csvFile) {
     $csvChemin = $deposit_directory . '/' . $csvFilename;
     $csvFile = fopen($csvChemin, 'w');
 
-    
+
     // Combine keys of the first two associative arrays for the header row
     $headerRow = array_merge(array_keys($results[2]), array_keys($results[1]));
     fputcsv($csvFile, $headerRow);
@@ -108,7 +108,7 @@ if ($csvFile) {
 
         fputcsv($csvFile, $row);
     }
-    
+
     fclose($csvFile);
 
     header('Content-Type: application/csv');
